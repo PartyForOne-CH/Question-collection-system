@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cjp6j0bhfgsj1"]
+
+[node name="RangeSetting" type="HBoxContainer" unique_id=1687563781]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=657365761]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "范围："
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=1342369879]
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "from"
+horizontal_alignment = 1
+
+[node name="StartIndex" type="SpinBox" parent="." unique_id=2033625161]
+layout_mode = 2
+max_value = 400.0
+value = 1.0
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="." unique_id=898182607]
+custom_minimum_size = Vector2(50, 40)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "to"
+horizontal_alignment = 1
+
+[node name="EndIndex" type="SpinBox" parent="." unique_id=1722771688]
+layout_mode = 2
+max_value = 2000.0
+value = 2000.0
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="." unique_id=1966362508]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "数量："
+
+[node name="Num" type="SpinBox" parent="." unique_id=913666531]
+layout_mode = 2
+min_value = 1.0
+max_value = 2000.0
+value = 2000.0

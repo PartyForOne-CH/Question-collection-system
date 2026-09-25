@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://d2ue3cq7c63hg"]
+
+[ext_resource type="Script" uid="uid://es0xassp56sg" path="res://Main.gd" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://835mcycsnmng" path="res://window.tscn" id="2_uu6xs"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_glv2v"]
+
+[node name="Main" type="Control" unique_id=489763972]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_glv2v")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=1635852152]
+layout_direction = 4
+layout_mode = 0
+offset_top = 6.0
+offset_right = 1600.0
+offset_bottom = 906.0
+
+[node name="Extension_Left" type="Control" parent="VBoxContainer" unique_id=464878752]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 8.95
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1618626149]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.8
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1909010016]
+layout_mode = 2
+
+[node name="RemainTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=2144093204]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="QuestionLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=212876396]
+custom_minimum_size = Vector2(800, 240)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "问题"
+
+[node name="Node2D" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=946436406]
+layout_mode = 2
+
+[node name="Options1" type="CheckBox" parent="VBoxContainer/MarginContainer/HBoxContainer/Node2D" unique_id=1799572228]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+button_group = SubResource("ButtonGroup_glv2v")
+text = "1"
+
+[node name="Options2" type="CheckBox" parent="VBoxContainer/MarginContainer/HBoxContainer/Node2D" unique_id=1386292998]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "2"
+
+[node name="Options3" type="CheckBox" parent="VBoxContainer/MarginContainer/HBoxContainer/Node2D" unique_id=1095992153]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "3"
+
+[node name="Options4" type="CheckBox" parent="VBoxContainer/MarginContainer/HBoxContainer/Node2D" unique_id=1802186117]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "4"
+
+[node name="ExplanationLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=256696061]
+custom_minimum_size = Vector2(800, 200)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 18
+text = "答案+详情"
+
+[node name="DebugLabel" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=701187027]
+visible = false
+layout_mode = 2
+
+[node name="Extension_Middle" type="Control" parent="VBoxContainer" unique_id=1315806031]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.12
+
+[node name="ButtonContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1282653546]
+layout_direction = 2
+layout_mode = 2
+
+[node name="ReselectButton" type="Button" parent="VBoxContainer/ButtonContainer" unique_id=233609361]
+layout_mode = 2
+text = "返回首页面"
+
+[node name="NextButton" type="Button" parent="VBoxContainer/ButtonContainer" unique_id=1048999315]
+layout_mode = 2
+text = "下一个"
+
+[node name="ExplanationButton" type="Button" parent="VBoxContainer/ButtonContainer" unique_id=1361609306]
+layout_mode = 2
+text = "文字说明"
+
+[node name="ComfirmButton" type="Button" parent="VBoxContainer/ButtonContainer" unique_id=1700301844]
+layout_mode = 2
+text = "确认"
+
+[node name="PictureButton" type="Button" parent="VBoxContainer/ButtonContainer" unique_id=568595657]
+layout_mode = 2
+text = "相关图例"
+
+[node name="Extension_Right" type="Control" parent="VBoxContainer" unique_id=99425848]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 8.95
+
+[node name="Window" parent="." unique_id=955434308 instance=ExtResource("2_uu6xs")]

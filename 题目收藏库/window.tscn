@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://835mcycsnmng"]
+
+[ext_resource type="Script" uid="uid://4gl0k35ddqay" path="res://window.gd" id="1_mvsta"]
+[ext_resource type="Texture2D" uid="uid://dqrcuntake48h" path="res://image/404.jpg" id="2_hjewq"]
+
+[node name="Window" type="Window" unique_id=955434308]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(800, 500)
+visible = false
+script = ExtResource("1_mvsta")
+
+[node name="VBoxContainer" type="ScrollContainer" parent="." unique_id=23613287]
+layout_direction = 2
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 494.0
+offset_bottom = 181.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1041584657]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 6.12
+texture = ExtResource("2_hjewq")
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://df87a6y7je03o"]
+
+[ext_resource type="Script" uid="uid://b414d42vr6r0u" path="res://configuration_window.gd" id="1_bhw3v"]
+
+[node name="Configuration_Window" type="Control" unique_id=61327667]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_bhw3v")
+
+[node name="Window" type="Window" parent="." unique_id=278967031]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(800, 500)
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window" unique_id=1500315590]
+offset_right = 804.0
+offset_bottom = 503.0
+
+[node name="Local_Inner_Trigger_Container" type="HBoxContainer" parent="Window/VBoxContainer" unique_id=647383380]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+size_flags_stretch_ratio = 0.25
+
+[node name="Extension2" type="Control" parent="Window/VBoxContainer/Local_Inner_Trigger_Container" unique_id=1396930522]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.84
+
+[node name="LocalOrInner_Label" type="Label" parent="Window/VBoxContainer/Local_Inner_Trigger_Container" unique_id=1889244731]
+layout_mode = 2
+text = "本地读取开关："
+
+[node name="Local_Inner_Trigger" type="CheckButton" parent="Window/VBoxContainer/Local_Inner_Trigger_Container" unique_id=1666282757]
+layout_mode = 2
+
+[node name="LocalDataSettingContainer" type="HBoxContainer" parent="Window/VBoxContainer" unique_id=276811946]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.0
+
+[node name="Extension2" type="Control" parent="Window/VBoxContainer/LocalDataSettingContainer" unique_id=761637842]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.84
+
+[node name="DataPathLabel" type="Label" parent="Window/VBoxContainer/LocalDataSettingContainer" unique_id=1849239420]
+layout_mode = 2
+text = "本机数据文件路径"
+
+[node name="PathEdit" type="TextEdit" parent="Window/VBoxContainer/LocalDataSettingContainer" unique_id=506912474]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="DataPathCopyButton" type="Button" parent="Window/VBoxContainer/LocalDataSettingContainer" unique_id=1795022230]
+layout_mode = 2
+text = "复制数据"
+
+[node name="ComfirmContainer" type="HBoxContainer" parent="Window/VBoxContainer" unique_id=584149763]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.88
+
+[node name="ComfirmButton" type="Button" parent="Window/VBoxContainer/ComfirmContainer" unique_id=168831757]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "确定"
+
+[node name="ApplyButton" type="Button" parent="Window/VBoxContainer/ComfirmContainer" unique_id=624747006]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "应用"
+
+[node name="Extension2" type="Control" parent="Window/VBoxContainer" unique_id=1653570678]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.84

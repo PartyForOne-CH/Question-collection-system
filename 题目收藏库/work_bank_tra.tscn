@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://da5pjnnjld5a5"]
+
+[ext_resource type="Script" uid="uid://bfrstvh1dqbfg" path="res://work_bank_tra.gd" id="1_86ong"]
+
+[node name="WorkBankTra" type="Node2D" unique_id=984451917]
+script = ExtResource("1_86ong")

@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://c3nfb3j3ywqf1"]
+
+[ext_resource type="Script" uid="uid://cuqcqrwk4t6mn" path="res://per_setting.gd" id="1_sv4ym"]
+[ext_resource type="Texture2D" uid="uid://8qvrpf7i34uo" path="res://icon_set_grey.png" id="2_1vmcq"]
+[ext_resource type="PackedScene" uid="uid://cjp6j0bhfgsj1" path="res://range_setting.tscn" id="2_n2fcw"]
+[ext_resource type="Texture2D" uid="uid://c25v7eg6c5o86" path="res://icon_set_green.png" id="3_1vmcq"]
+[ext_resource type="PackedScene" uid="uid://df87a6y7je03o" path="res://configuration_window.tscn" id="5_jhdib"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vmcq"]
+atlas = ExtResource("2_1vmcq")
+region = Rect2(448, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhdib"]
+atlas = ExtResource("2_1vmcq")
+region = Rect2(448, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7du0b"]
+atlas = ExtResource("3_1vmcq")
+region = Rect2(448, 128, 64, 64)
+
+[sub_resource type="FontVariation" id="FontVariation_n2fcw"]
+variation_embolden = -0.61
+variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
+
+[node name="PerSetting" type="Control" unique_id=2116513378]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sv4ym")
+
+[node name="BoxContainer" type="VBoxContainer" parent="." unique_id=657811243]
+layout_direction = 2
+layout_mode = 1
+offset_right = 1600.0
+offset_bottom = 900.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="BoxContainer" unique_id=106918142]
+layout_mode = 2
+
+[node name="Control_Configuration" type="Control" parent="BoxContainer/HBoxContainer2" unique_id=382192077]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ConfigurationButton" type="TextureButton" parent="BoxContainer/HBoxContainer2/Control_Configuration" unique_id=1467778043]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_top = 5.0
+offset_right = 14.0
+offset_bottom = 69.0
+grow_horizontal = 0
+scale = Vector2(0.755, 0.755)
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture_normal = SubResource("AtlasTexture_1vmcq")
+texture_pressed = SubResource("AtlasTexture_jhdib")
+texture_hover = SubResource("AtlasTexture_7du0b")
+stretch_mode = 0
+
+[node name="SettingListContainer" type="VBoxContainer" parent="BoxContainer" unique_id=1456784251]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+size_flags_stretch_ratio = 0.92
+
+[node name="DisciplineContainer" type="HBoxContainer" parent="BoxContainer/SettingListContainer" unique_id=408430048]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="DisciplineLabel" type="RichTextLabel" parent="BoxContainer/SettingListContainer/DisciplineContainer" unique_id=941790782]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "学科"
+
+[node name="DisciplineButton" type="OptionButton" parent="BoxContainer/SettingListContainer/DisciplineContainer" unique_id=975049498]
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "选择一门科目"
+popup/item_0/id = 0
+
+[node name="CategorySetting" type="HBoxContainer" parent="BoxContainer/SettingListContainer" unique_id=16967515]
+layout_mode = 2
+
+[node name="CategoryTypelabel" type="RichTextLabel" parent="BoxContainer/SettingListContainer/CategorySetting" unique_id=1108299823]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "类型"
+
+[node name="CategoryType" type="OptionButton" parent="BoxContainer/SettingListContainer/CategorySetting" unique_id=1910084071]
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "全部"
+popup/item_0/id = 0
+
+[node name="QuestionNum" type="RichTextLabel" parent="BoxContainer/SettingListContainer/CategorySetting" unique_id=994967807]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_n2fcw")
+theme_override_font_sizes/normal_font_size = 19
+text = "Total："
+
+[node name="WorkModeContainer" type="HBoxContainer" parent="BoxContainer/SettingListContainer" unique_id=381445201]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BoxContainer/SettingListContainer/WorkModeContainer" unique_id=1611912340]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "工作模式"
+
+[node name="OptionButton" type="OptionButton" parent="BoxContainer/SettingListContainer/WorkModeContainer" unique_id=906014865]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "随机"
+popup/item_0/id = 0
+popup/item_1/text = "顺序"
+popup/item_1/id = 1
+
+[node name="RangeSetting" parent="BoxContainer/SettingListContainer" unique_id=1687563781 instance=ExtResource("2_n2fcw")]
+layout_mode = 2
+
+[node name="Extension" type="Control" parent="BoxContainer" unique_id=1285710030]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.13
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer" unique_id=1369056179]
+layout_mode = 2
+
+[node name="ConfirmButton" type="Button" parent="BoxContainer/HBoxContainer" unique_id=801550030]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 2
+text = "确定"
+
+[node name="ResetButton" type="Button" parent="BoxContainer/HBoxContainer" unique_id=625218180]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "重置"
+
+[node name="Extension2" type="Control" parent="BoxContainer" unique_id=381232424]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.84
+
+[node name="Configuration_Window" parent="." unique_id=61327667 instance=ExtResource("5_jhdib")]
+layout_mode = 0
