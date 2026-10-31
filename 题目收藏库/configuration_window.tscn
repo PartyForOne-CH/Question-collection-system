@@ -60,18 +60,18 @@ layout_mode = 2
 layout_mode = 2
 text = "复制数据"
 
-[node name="ComfirmContainer" type="HBoxContainer" parent="Window/VBoxContainer" unique_id=584149763]
+[node name="ConfirmContainer" type="HBoxContainer" parent="Window/VBoxContainer" unique_id=584149763]
 layout_mode = 2
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.88
 
-[node name="ComfirmButton" type="Button" parent="Window/VBoxContainer/ComfirmContainer" unique_id=168831757]
+[node name="ConfirmButton" type="Button" parent="Window/VBoxContainer/ConfirmContainer" unique_id=168831757]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 text = "确定"
 
-[node name="ApplyButton" type="Button" parent="Window/VBoxContainer/ComfirmContainer" unique_id=624747006]
+[node name="ApplyButton" type="Button" parent="Window/VBoxContainer/ConfirmContainer" unique_id=624747006]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -81,3 +81,7 @@ text = "应用"
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.84
+
+[node name="ErrorConfigHint" type="ConfirmationDialog" parent="Window" unique_id=670613346]
+oversampling_override = 1.0
+size = Vector2i(489, 100)

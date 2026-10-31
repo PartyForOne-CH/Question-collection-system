@@ -50,30 +50,30 @@ layout_mode = 2
 
 [node name="Options1" type="CheckBox" parent="VBoxContainer/MarginContainer/HBoxContainer/Node2D" unique_id=1799572228]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 20
 button_group = SubResource("ButtonGroup_glv2v")
 text = "1"
 
 [node name="Options2" type="CheckBox" parent="VBoxContainer/MarginContainer/HBoxContainer/Node2D" unique_id=1386292998]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 20
 text = "2"
 
 [node name="Options3" type="CheckBox" parent="VBoxContainer/MarginContainer/HBoxContainer/Node2D" unique_id=1095992153]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 20
 text = "3"
 
 [node name="Options4" type="CheckBox" parent="VBoxContainer/MarginContainer/HBoxContainer/Node2D" unique_id=1802186117]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 20
 text = "4"
 
 [node name="ExplanationLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=256696061]
 custom_minimum_size = Vector2(800, 200)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 24
 text = "答案+详情"
 
 [node name="DebugLabel" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=701187027]
@@ -101,7 +101,7 @@ text = "下一个"
 layout_mode = 2
 text = "文字说明"
 
-[node name="ComfirmButton" type="Button" parent="VBoxContainer/ButtonContainer" unique_id=1700301844]
+[node name="ConfirmButton" type="Button" parent="VBoxContainer/ButtonContainer" unique_id=1700301844]
 layout_mode = 2
 text = "确认"
 

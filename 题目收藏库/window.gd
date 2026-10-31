@@ -19,10 +19,10 @@ func _process(_delta: float) -> void:
 func size_regulate(window:Window,container:Container,texture:Texture2D) -> void:
 	var texture_size_x = texture.get_size().x
 	var texture_size_y = texture.get_size().y
-	if texture_size_x>= 1000:
-		texture_size_x = 1000
-	if texture_size_y>=640:
-		texture_size_y=640
+	if texture_size_x>= 1250:
+		texture_size_x = 1250
+	if texture_size_y>=900:
+		texture_size_y=900
 	container.size = Vector2(texture_size_x,texture_size_y)
 	window.size = Vector2((texture_size_x+30),(texture_size_y+30))
 	var container_position_x = (window.get_size().x-texture_size_x)/2

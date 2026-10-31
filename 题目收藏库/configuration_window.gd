@@ -1,11 +1,12 @@
 extends Control
 signal refresh()
 @onready var window :Window= $Window
+@onready var ErrorConfigHint :ConfirmationDialog = $Window/ErrorConfigHint
 @onready var localInnerTrigger :CheckButton = $Window/VBoxContainer/Local_Inner_Trigger_Container/Local_Inner_Trigger
 @onready var PathEdit :TextEdit = $Window/VBoxContainer/LocalDataSettingContainer/PathEdit
 @onready var DataPathCopy_button :Button = $Window/VBoxContainer/LocalDataSettingContainer/DataPathCopyButton
-@onready var comfirm_button :Button = $Window/VBoxContainer/ComfirmContainer/ComfirmButton
-@onready var apply_button :Button = $Window/VBoxContainer/ComfirmContainer/ApplyButton
+@onready var confirm_button :Button = $Window/VBoxContainer/ConfirmContainer/ConfirmButton
+@onready var apply_button :Button = $Window/VBoxContainer/ConfirmContainer/ApplyButton
 @onready var wordbank_path :String= "res://database//"
 @onready var image_path :String= "res://image//"
 @onready var config :Dictionary ={}
@@ -43,8 +44,9 @@ func _process(_delta: float) -> void:
 #信号连接集合
 func _signal_connect_func()->void:
 	window.close_requested.connect(_on_close_requested)
-	comfirm_button.pressed.connect(_update_config_file)
-	comfirm_button.pressed.connect(_on_close_requested)
+	#confirm_button.pressed.connect(_UpdateConfig_SafetyChecking)
+	confirm_button.pressed.connect(_update_config_file)
+	confirm_button.pressed.connect(_on_close_requested)
 	apply_button.pressed.connect(_update_config_file)
 	localInnerTrigger.toggled.connect(_Local_Inner_Trigger_update.bind(localInnerTrigger))
 	DataPathCopy_button.pressed.connect(_Wordbank_CopyTo_PathEdit)
@@ -78,8 +80,10 @@ func UI_update_config() -> void:
 func _Local_Inner_Trigger_update(_pressed: bool,button:CheckButton):
 	if button.button_pressed == true:
 		config['data']['data_mode'] = 'local'
+		refresh.emit()
 	elif button.button_pressed == false:
 		config['data']['data_mode'] = 'inner'
+		refresh.emit()
 		
 #更新数据推送至本地的地址
 func _PathEdit_update()->void:
@@ -87,7 +91,6 @@ func _PathEdit_update()->void:
 		config["data"]["data_local_path"] = PathEdit.text
 	else:
 		print('No valid config["data"]["data_local_path"]!!')
-#处理配置文件的打包问题
 #防误触处理
 #添加配置文件和字典匹配检查函数
 #确保路径已存在
@@ -99,7 +102,7 @@ func _dir_check(dir_list:Array)->void:
 			DirAccess.make_dir_recursive_absolute(dir)
 			print("make dir'%s'."%dir)
 			
-func _Wordbank_CopyTo_PathEdit()->void:
+func _Wordbank_CopyTo_PathEdit()->void:#路径先同步到配置文件，再复制
 	var config_file :ConfigFile= ConfigFile.new()
 	config_file.load('user://configuration.cfg')
 	var current_time :String
@@ -151,7 +154,17 @@ func copy_folder_recursive(src_dir: String, dst_dir: String) -> Error:
 		if err != OK:
 			return err
 	return OK
-#确认修改配置文件表
+#自定义设置合理性检查。1、检查本地路径文件存在性。本地文件改为自动发出信号focus_exited
+func _UpdateConfig_SafetyChecking():
+	var check_flag :bool = 0
+	var config_file :ConfigFile= ConfigFile.new()
+	config_file.load('user://configuration.cfg')
+	if config_file.get_value('data','data_local_path') != config['data']['data_local_path']:
+		ErrorConfigHint.dialog_text = ErrorConfigHint.dialog_text +"文件路径"
+		ErrorConfigHint.popup_centered_clamped()
+	#else:
+		
+#确认修改配置文件表，并刷新
 func _update_config_file():
 	_PathEdit_update()
 	var config_file :ConfigFile= ConfigFile.new()
@@ -160,10 +173,11 @@ func _update_config_file():
 		for key in config[section]:
 			config_file.set_value(section,key,config[section][key])
 	config_file.save('user://configuration.cfg')
+	refresh.emit()
+	
 func _on_close_requested() -> void:
 	var config_file :ConfigFile= ConfigFile.new()
 	config_file.load('user://configuration.cfg')
 	#print('data_mode:',config_file.get_value("data","data_mode"))
 	window.hide()
-	refresh.emit()
 	pass # Replace with function body.

@@ -6,7 +6,7 @@ extends Control
 @onready var next_button = $VBoxContainer/ButtonContainer/NextButton
 @onready var explanation_button = $VBoxContainer/ButtonContainer/ExplanationButton
 @onready var reselect_button = $VBoxContainer/ButtonContainer/ReselectButton
-@onready var comfirm_button = $VBoxContainer/ButtonContainer/ComfirmButton
+@onready var confirm_button = $VBoxContainer/ButtonContainer/ConfirmButton
 @onready var picture_button = $VBoxContainer/ButtonContainer/PictureButton
 #选项组
 @onready var group = ButtonGroup.new()
@@ -36,7 +36,7 @@ func _ready():
 	pop_up_window.visible = false
 	next_button.pressed.connect(_on_random_pressed)
 	explanation_button.pressed.connect(_on_meaning_pressed)
-	comfirm_button.pressed.connect(_option_proofreading)
+	confirm_button.pressed.connect(_option_proofreading)
 	reselect_button.pressed.connect(return_to_persetting)
 	picture_button.pressed.connect(_show_picture)
 #func _debug() -> void:
@@ -62,7 +62,7 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("COMFIRM"):
 		#keybord_count += 1
 		#print("回车键点击次数：",keybord_count)
-		comfirm_button.emit_signal("pressed")
+		confirm_button.emit_signal("pressed")
 		#_option_proofreading()
 	elif color == Color.GREEN and comfrimed_flag == true:#（双击确认直接下一个）
 		_on_random_pressed()
@@ -152,16 +152,19 @@ func _example_image_load(window:Window,path):
 		else:
 			picture_button.disabled = false
 			texture_rect.texture = ResourceLoader.load(path)
-	elif data_mode == 'local':#tap
+	elif data_mode == 'local':
+		var img :Image= Image.new()
 		if path == 'none':
 			picture_button.disabled = true
 			texture_rect.texture = ResourceLoader.load("res://image/404.jpg")
 		else:
-			var path_last_word :String= path.get_file()+".png"
-			#print("path_last_word :",path_last_word)
+			var path_last_word :String= path.get_file()
 			path = data_local_path+'//'+Global.project_name+"//"+"image//"+path_last_word
 			picture_button.disabled = false
-			texture_rect.texture = ResourceLoader.load(path)
+			var err = img.load(path)
+			if err == OK:
+				texture_rect.texture = ImageTexture.create_from_image(img)
+			#texture_rect.texture = ResourceLoader.load(path)
 		print(path)
 	else:
 		print("config_file['data']['data_mode'] is not valid!!!")	
